@@ -6,7 +6,7 @@ class Calculator {
   }
 
   clear() {
-    this.currentOperand = ''
+    this.currentOperand = '0'
     this.previousOperand = ''
     this.operation = undefined
   }
@@ -25,7 +25,7 @@ class Calculator {
     }
     this.operation = operation
     this.previousOperand = this.currentOperand
-    this.currentOperand = ''
+    this.currentOperand = '0'
   }
 
   compute() {
@@ -53,7 +53,7 @@ class Calculator {
         return
     }
     this.currentOperand = computation
-    this.operation = undefined
+    this.operation = null
     this.previousOperand = ''
   }
 
@@ -83,6 +83,19 @@ class Calculator {
     } else {
       this.previousOperandTextElement.innerText = ''
     }
+  }
+
+  delete() {
+    let temp = this.currentOperand;
+    if(temp == "" || temp == "0"){
+      this.currentOperand = "0";
+      return;
+    }
+    let afterDelete="0";    
+    for(var i=0; i<temp.length-1; i++){
+      afterDelete+=temp[i];
+    }
+    this.currentOperand = afterDelete;
   }
 }
 
